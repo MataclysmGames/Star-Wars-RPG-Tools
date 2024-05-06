@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://4lkhyjgjly8d"]
+[gd_scene load_steps=12 format=3 uid="uid://4lkhyjgjly8d"]
 
 [ext_resource type="Script" path="res://scripts/character_creation.gd" id="1_72lxa"]
 [ext_resource type="Theme" uid="uid://bv62ox4jmwkl" path="res://resources/default_font_theme.tres" id="2_vddke"]
 [ext_resource type="Texture2D" uid="uid://dwx23df8fxgc5" path="res://assets/human-male.png" id="3_32b6o"]
 [ext_resource type="PackedScene" uid="uid://brm5b2pkgo4ep" path="res://scenes/multi_progress_bar.tscn" id="4_etu6i"]
+[ext_resource type="Theme" uid="uid://b665kecqsoohy" path="res://resources/bold_font_theme.tres" id="4_wpcbl"]
 
 [sub_resource type="Gradient" id="Gradient_oksiq"]
 colors = PackedColorArray(0.0728426, 0.0728426, 0.0728426, 1, 0.230315, 0.230315, 0.230315, 1)
@@ -77,7 +78,8 @@ size_flags_vertical = 0
 [node name="Title" type="Label" parent="MarginContainer/FullContainer/TopContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-theme = ExtResource("2_vddke")
+theme = ExtResource("4_wpcbl")
+theme_override_font_sizes/font_size = 16
 text = "Character Creation"
 
 [node name="Button" type="Button" parent="MarginContainer/FullContainer/TopContainer"]
@@ -116,9 +118,10 @@ stretch_mode = 5
 
 [node name="InfoLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer"]
 layout_mode = 2
-theme = ExtResource("2_vddke")
+theme = ExtResource("4_wpcbl")
 theme_override_font_sizes/font_size = 12
 text = "Character"
+horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer"]
 layout_mode = 2
@@ -131,7 +134,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 7
 theme = ExtResource("2_vddke")
 theme_override_colors/font_color = Color(0.658824, 0.658824, 0.658824, 1)
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Name"
 vertical_alignment = 1
 
@@ -140,7 +143,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 7
 text = "Turbongo Furlong"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -151,7 +154,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 7
 theme = ExtResource("2_vddke")
 theme_override_colors/font_color = Color(0.658824, 0.658824, 0.658824, 1)
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Species"
 vertical_alignment = 1
 
@@ -160,7 +163,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 7
 text = "Human"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -171,7 +174,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 7
 theme = ExtResource("2_vddke")
 theme_override_colors/font_color = Color(0.658824, 0.658824, 0.658824, 1)
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Career"
 vertical_alignment = 1
 
@@ -180,7 +183,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 7
 text = "Bounty Hunter"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -191,7 +194,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 7
 theme = ExtResource("2_vddke")
 theme_override_colors/font_color = Color(0.658824, 0.658824, 0.658824, 1)
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Specs."
 vertical_alignment = 1
 
@@ -200,7 +203,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 7
 text = "Assassin, Gadgeteer"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -211,7 +214,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 7
 theme = ExtResource("2_vddke")
 theme_override_colors/font_color = Color(0.658824, 0.658824, 0.658824, 1)
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Obligation"
 vertical_alignment = 1
 
@@ -220,30 +223,47 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 7
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 7
 text = "Dutybound"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MotivationLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource("2_vddke")
+theme_override_colors/font_color = Color(0.658824, 0.658824, 0.658824, 1)
+theme_override_font_sizes/font_size = 7
+text = "Motivation"
+vertical_alignment = 1
+
+[node name="MotivationValue" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Droid Rights"
 horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="BackgroundLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer"]
 layout_mode = 2
-theme = ExtResource("2_vddke")
+theme = ExtResource("4_wpcbl")
 theme_override_font_sizes/font_size = 12
 text = "Background"
+horizontal_alignment = 1
 
 [node name="BackgroundValue" type="RichTextLabel" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 7
 bbcode_enabled = true
-text = "Growing up on the desolate planet of [color=green]Hoth[/color], Turbongo's family made their living via [color=orange]tauntaun breeding[/color].
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-Their goal is to do what they can to help the Rebellion and then get back to their family to run the farm.
-
-Their goal is to do what they can to help the Rebellion and then get back to their family to run the farm.
-
-Their goal is to do what they can to help the Rebellion and then get back to their family to run the farm."
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
 [node name="SkillsContainer" type="PanelContainer" parent="MarginContainer/FullContainer/MainContainer"]
 layout_mode = 2
@@ -262,14 +282,15 @@ layout_mode = 2
 
 [node name="CharacteristicsLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer"]
 layout_mode = 2
-theme = ExtResource("2_vddke")
+theme = ExtResource("4_wpcbl")
 theme_override_font_sizes/font_size = 12
 text = "Characteristics"
 horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
+theme_override_constants/v_separation = 0
 columns = 6
 
 [node name="BrawnValue" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/GridContainer"]
@@ -277,7 +298,7 @@ layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 14
 text = "3"
 horizontal_alignment = 1
 
@@ -286,7 +307,7 @@ layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 14
 text = "3"
 horizontal_alignment = 1
 
@@ -295,7 +316,7 @@ layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 14
 text = "3"
 horizontal_alignment = 1
 
@@ -304,7 +325,7 @@ layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 14
 text = "3"
 horizontal_alignment = 1
 
@@ -313,7 +334,7 @@ layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 14
 text = "3"
 horizontal_alignment = 1
 
@@ -322,7 +343,7 @@ layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 14
 text = "3"
 horizontal_alignment = 1
 
@@ -331,7 +352,7 @@ layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Brawn"
 horizontal_alignment = 1
 
@@ -340,7 +361,7 @@ layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Agility"
 horizontal_alignment = 1
 
@@ -349,7 +370,7 @@ layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Intellect"
 horizontal_alignment = 1
 
@@ -358,7 +379,7 @@ layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Cunning"
 horizontal_alignment = 1
 
@@ -367,7 +388,7 @@ layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Willpower"
 horizontal_alignment = 1
 
@@ -376,20 +397,20 @@ layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Presence"
 horizontal_alignment = 1
 
 [node name="SkillsLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer"]
 layout_mode = 2
-theme = ExtResource("2_vddke")
+theme = ExtResource("4_wpcbl")
 theme_override_font_sizes/font_size = 12
 text = "Skills"
 horizontal_alignment = 1
 
 [node name="SkillsGridContainer" type="GridContainer" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer"]
 layout_mode = 2
-theme_override_constants/v_separation = 0
+theme_override_constants/v_separation = 1
 columns = 2
 
 [node name="AstrogationLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
@@ -397,326 +418,336 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Astrogation"
 
 [node name="AstrogationBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-primary_progress = 3
-secondary_progress = 2
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
 
 [node name="AthleticsLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Athletics"
 
 [node name="AthleticsBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-primary_progress = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
 
 [node name="CharmLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Charm"
 
 [node name="CharmBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-value = 4.0
-primary_progress = 4
-secondary_progress = 2
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
 
 [node name="CoercionLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Coercion"
 
 [node name="CoercionBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-value = 1.0
-primary_progress = 1
-secondary_progress = 2
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
 
 [node name="ComputersLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Computers"
 
 [node name="ComputersBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-primary_progress = 3
-secondary_progress = 1
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
 
 [node name="CoolLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Cool"
 
 [node name="CoolBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-value = 4.0
-primary_progress = 4
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
 
 [node name="CoordinationLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Coordination"
 
 [node name="CoordinationBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-value = 4.0
-primary_progress = 4
-secondary_progress = 1
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
 
 [node name="DeceptionLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Deception"
 
 [node name="DeceptionBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-value = 4.0
-primary_progress = 4
-secondary_progress = 1
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
 
 [node name="DisciplineLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Discipline"
 
 [node name="DisciplineBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-value = 1.0
-primary_progress = 1
-secondary_progress = 2
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
 
 [node name="LeadershipLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Leadership"
 
 [node name="LeadershipBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-value = 2.0
-primary_progress = 2
-secondary_progress = 2
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
 
 [node name="MechanicsLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Mechanics"
 
 [node name="MechanicsBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-value = 5.0
-primary_progress = 5
-secondary_progress = 1
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
 
 [node name="MedicineLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Medicine"
 
 [node name="MedicineBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-value = 4.0
-primary_progress = 4
-secondary_progress = 1
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
 
 [node name="NegotiationLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Negotiation"
 
 [node name="NegotiationBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-value = 4.0
-primary_progress = 4
-secondary_progress = 1
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
 
 [node name="PerceptionLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Perception"
 
 [node name="PerceptionBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-primary_progress = 3
-secondary_progress = 2
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
 
 [node name="PilotingLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Piloting"
 
 [node name="PilotingBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-primary_progress = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
 
 [node name="ResilienceLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Resilience"
 
 [node name="ResilienceBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-value = 1.0
-primary_progress = 1
-secondary_progress = 2
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
 
 [node name="SkulduggeryLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Skulduggery"
 
 [node name="SkulduggeryBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-value = 2.0
-primary_progress = 2
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
 
 [node name="StealthLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Stealth"
 
 [node name="StealthBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-value = 2.0
-primary_progress = 2
-secondary_progress = 1
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
 
 [node name="StreetwiseLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Streetwise"
 
 [node name="StreetwiseBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-value = 4.0
-primary_progress = 4
-secondary_progress = 1
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
 
 [node name="SurvivalLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Survival"
 
 [node name="SurvivalBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-value = 2.0
-primary_progress = 2
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
 
 [node name="VigilanceLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 7
 text = "Vigilance"
 
 [node name="VigilanceBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-value = 2.0
-primary_progress = 2
-secondary_progress = 1
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
 
 [node name="InventoryContainer" type="PanelContainer" parent="MarginContainer/FullContainer/MainContainer"]
 layout_mode = 2
@@ -735,7 +766,7 @@ layout_mode = 2
 
 [node name="InventoryLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container"]
 layout_mode = 2
-theme = ExtResource("2_vddke")
+theme = ExtResource("4_wpcbl")
 theme_override_font_sizes/font_size = 12
 text = "Inventory"
 horizontal_alignment = 1
@@ -755,7 +786,7 @@ fit_content = true
 [node name="TalentsLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container"]
 layout_mode = 2
 size_flags_vertical = 0
-theme = ExtResource("2_vddke")
+theme = ExtResource("4_wpcbl")
 theme_override_font_sizes/font_size = 12
 text = "Talents & Abilities"
 horizontal_alignment = 1

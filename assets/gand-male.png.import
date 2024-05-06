@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbfqetug0y2rd"
-path="res://.godot/imported/gray-9-patch.png-9e245701f79f61a2cd261dbd0738c744.ctex"
+uid="uid://dmvg8oov6dj4b"
+path="res://.godot/imported/gand-male.png-7896a5b216288f242568fdf97526eccc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gray-9-patch.png"
-dest_files=["res://.godot/imported/gray-9-patch.png-9e245701f79f61a2cd261dbd0738c744.ctex"]
+source_file="res://assets/gand-male.png"
+dest_files=["res://.godot/imported/gand-male.png-7896a5b216288f242568fdf97526eccc.ctex"]
 
 [params]
 
