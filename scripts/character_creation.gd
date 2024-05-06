@@ -58,7 +58,7 @@ func create_button_pressed():
 	button.release_focus()
 	var random_character : CharacterInfo = CharacterInfo.random()
 	
-	profile.texture = load("res://assets/%s-%s.png" % [random_character.species, random_character.gender])
+	profile.texture = load("res://assets/%s-%s.png" % [random_character.species.to_lower(), random_character.gender.to_lower()])
 	
 	name_value.text = random_character.character_name
 	species_value.text = random_character.species
