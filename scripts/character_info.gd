@@ -16,6 +16,10 @@ var cunning : int = 1
 var willpower : int = 1
 var presence : int = 1
 
+var wound_threshold : int = 1
+var strain_threshold : int = 1
+var soak_value : int = 1
+
 # skill ranks
 var astrogation : int = 0
 var athletics : int = 0
@@ -56,6 +60,8 @@ static func random() -> CharacterInfo:
 			ch.cunning = 3
 			ch.willpower = 2
 			ch.presence = 2
+			ch.wound_threshold = 10
+			ch.strain_threshold = 11
 		"Droid":
 			ch.character_name = pick(["CT", "R4", "G7", "L1"]) + "-" + pick(["62", "PO", "D2"])
 			ch.brawn = 1
@@ -71,6 +77,8 @@ static func random() -> CharacterInfo:
 			else:
 				ch.intellect = 3
 				ch.presence = 2
+			ch.wound_threshold = 10
+			ch.strain_threshold = 10
 		"Gand":
 			ch.character_name = pick(["Teyk", "Rox", "Tosh", "Ax"]) + " " + pick(["Doclu", "Kaff", "Nerru"])
 			ch.brawn = 2
@@ -79,6 +87,8 @@ static func random() -> CharacterInfo:
 			ch.cunning = 2
 			ch.willpower = 3
 			ch.presence = 1
+			ch.wound_threshold = 10
+			ch.strain_threshold = 10
 		"Human":
 			ch.character_name = pick(["Hugh", "Harry", "Henry", "Hope"]) + " " + pick(["Kinpow", "Tancot", "Lovdra", "Jones", "Solo", "Smith"])
 			ch.brawn = 2
@@ -87,6 +97,8 @@ static func random() -> CharacterInfo:
 			ch.cunning = 2
 			ch.willpower = 2
 			ch.presence = 2
+			ch.wound_threshold = 10
+			ch.strain_threshold = 10
 		"Rodian":
 			ch.character_name = pick(["Clortt", "Shuhi", "Beesk", "Sparn"]) + " " + pick(["Cuggs", "Ghe", "Verme"])
 			ch.brawn = 2
@@ -95,6 +107,8 @@ static func random() -> CharacterInfo:
 			ch.cunning = 2
 			ch.willpower = 1
 			ch.presence = 2
+			ch.wound_threshold = 10
+			ch.strain_threshold = 10
 		"Trandoshan":
 			ch.character_name = pick(["Jorq", "Hart", "Kahk", "Bugg", "Assh"]) + " " + pick(["Gunlu", "Sasch", "Zurn"])
 			ch.brawn = 3
@@ -103,6 +117,8 @@ static func random() -> CharacterInfo:
 			ch.cunning = 2
 			ch.willpower = 2
 			ch.presence = 2
+			ch.wound_threshold = 12
+			ch.strain_threshold = 9
 		"Twi'lek":
 			ch.character_name = pick(["Jo", "Fab", "Les", "Chak", "Met", "Cin", "Ceb"]) + " " + pick(["Pell", "Fon", "Fi", "Gedki", "Modur", "Doh"])
 			ch.brawn = 1
@@ -111,6 +127,8 @@ static func random() -> CharacterInfo:
 			ch.cunning = 2
 			ch.willpower = 2
 			ch.presence = 3
+			ch.wound_threshold = 10
+			ch.strain_threshold = 11
 		"Wookiee":
 			ch.character_name = pick(["Spov", "Shiwu", "Rilna", "Purrsi", "Unmedde", "Dhitil"])
 			ch.brawn = 3
@@ -119,6 +137,8 @@ static func random() -> CharacterInfo:
 			ch.cunning = 2
 			ch.willpower = 1
 			ch.presence = 2
+			ch.wound_threshold = 14
+			ch.strain_threshold = 8
 		_:
 			ch.character_name = pick(["Freddy"]) + " " + pick(["Friday"])
 	
@@ -271,16 +291,32 @@ static func random() -> CharacterInfo:
 			ch.presence += 1
 	
 	# random normal items
-	ch.inventory.append("%d credits" % [randi_range(1, 25) * 100])
+	ch.inventory.append("[color=green]%d credits[/color]" % [randi_range(5, 30) * 10])
+	ch.inventory.append(pick(["Normal Clothing", "Heavy Clothing", "Padded Armor"]))
 	ch.inventory.append(pick(["Stimpack", "Binders", "Hand Scanner"]))
 	ch.inventory.append(pick(["Comlink (handheld)", "Comlink (long range)", "Medpac"]))
 	ch.inventory.append(pick(["Glow Rod", "Datapad"]))
 	
 	# chance for a rare/expensive/illegal item
 	if randf_range(0, 1) >= 0.90:
-		ch.inventory.append(pick(["Jet Pack", "Death sticks (1 dose)", "Glitterstim (1 dose)", "Lesai (1 dose)"]))
+		ch.inventory.append("[color=red]%s[/color]" % pick(["Death sticks (1 dose)", "Glitterstim (1 dose)", "Lesai (1 dose)"]))
 	if randf_range(0, 1) >= 0.95:
-		ch.inventory.append(pick(["Data Breaker", "Personal Stealth Field", "Old Broken Lightsaber"]))
+		ch.inventory.append("[color=purple]%s[/color]" % pick(["Jet Pack", "Data Breaker", "Personal Stealth Field"]))
+	if randf_range(0, 1) >= 0.99:
+		ch.inventory.append("[color=yellow]%s[/color]" % pick(["Broken Lightsaber", "Pumpkin Bumpkin Chumplins"]))
+	
+	ch.wound_threshold += ch.brawn
+	ch.strain_threshold += ch.willpower
+	ch.soak_value = ch.brawn
+	if ch.inventory.has("Heavy Clothing"):
+		ch.soak_value += 1
+	elif ch.inventory.has("Padded Armor"):
+		ch.soak_value += 2
+	
+	if ch.talents.has("Grit"):
+		ch.strain_threshold += 1
+	if ch.talents.has("Toughened"):
+		ch.wound_threshold += 2
 	
 	return ch
 	

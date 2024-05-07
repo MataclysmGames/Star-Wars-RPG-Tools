@@ -12,6 +12,10 @@ extends CanvasLayer
 @onready var obligation_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/GridContainer/ObligationValue
 @onready var motivation_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/GridContainer/MotivationValue
 
+@onready var soak_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/StatsContainer/SoakValue
+@onready var wound_threshold_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/StatsContainer/WoundThresholdValue
+@onready var strain_threshold_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/StatsContainer/StrainThresholdValue
+
 @onready var brawn_value: Label = $MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/GridContainer/BrawnValue
 @onready var agility_value: Label = $MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/GridContainer/AgilityValue
 @onready var intellect_value: Label = $MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/GridContainer/IntellectValue
@@ -66,6 +70,10 @@ func create_button_pressed():
 	specs_value.text = ", ".join(random_character.specs)
 	obligation_value.text = random_character.obligation
 	motivation_value.text = random_character.motivation
+	
+	soak_value.text = str(random_character.soak_value)
+	wound_threshold_value.text = str(random_character.wound_threshold)
+	strain_threshold_value.text = str(random_character.strain_threshold)
 	
 	brawn_value.text = str(random_character.brawn)
 	agility_value.text = str(random_character.agility)
