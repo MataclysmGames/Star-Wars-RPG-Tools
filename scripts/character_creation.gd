@@ -4,24 +4,24 @@ extends CanvasLayer
 @onready var main_container: HBoxContainer = $MarginContainer/FullContainer/MainContainer
 
 @onready var profile: TextureRect = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/Profile
+@onready var name_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/NameLabel
 
-@onready var name_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/GridContainer/NameValue
-@onready var species_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/GridContainer/SpeciesValue
-@onready var career_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/GridContainer/CareerValue
-@onready var specs_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/GridContainer/SpecsValue
-@onready var obligation_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/GridContainer/ObligationValue
-@onready var motivation_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/GridContainer/MotivationValue
+@onready var species_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/InfoGrid/SpeciesValue
+@onready var career_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/InfoGrid/CareerValue
+@onready var specs_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/InfoGrid/SpecsValue
+@onready var obligation_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/InfoGrid/ObligationValue
+@onready var motivation_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/InfoGrid/MotivationValue
 
-@onready var soak_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/StatsContainer/SoakValue
-@onready var wound_threshold_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/StatsContainer/WoundThresholdValue
-@onready var strain_threshold_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/StatsContainer/StrainThresholdValue
+@onready var soak_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/StatsGrid/SoakValue
+@onready var wound_threshold_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/StatsGrid/WoundThresholdValue
+@onready var strain_threshold_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/StatsGrid/StrainThresholdValue
 
-@onready var brawn_value: Label = $MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/GridContainer/BrawnValue
-@onready var agility_value: Label = $MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/GridContainer/AgilityValue
-@onready var intellect_value: Label = $MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/GridContainer/IntellectValue
-@onready var cunning_value: Label = $MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/GridContainer/CunningValue
-@onready var willpower_value: Label = $MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/GridContainer/WillpowerValue
-@onready var presence_value: Label = $MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/GridContainer/PresenceValue
+@onready var brawn_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/CharacteristicsGrid/BrawnValue
+@onready var agility_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/CharacteristicsGrid/AgilityValue
+@onready var intellect_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/CharacteristicsGrid/IntellectValue
+@onready var cunning_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/CharacteristicsGrid/CunningValue
+@onready var willpower_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/CharacteristicsGrid/WillpowerValue
+@onready var presence_value: Label = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/CharacteristicsGrid/PresenceValue
 
 @onready var astrogation_bar: MultiProgressBar = $MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer/AstrogationBar
 @onready var athletics_bar: MultiProgressBar = $MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer/AthleticsBar
@@ -45,21 +45,21 @@ extends CanvasLayer
 @onready var survival_bar: MultiProgressBar = $MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer/SurvivalBar
 @onready var vigilance_bar: MultiProgressBar = $MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer/VigilanceBar
 
+@onready var brawl_bar: MultiProgressBar = $MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer/BrawlBar
+@onready var gunnery_bar: MultiProgressBar = $MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer/GunneryBar
+@onready var melee_bar: MultiProgressBar = $MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer/MeleeBar
+@onready var ranged_light_bar: MultiProgressBar = $MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer/RangedLightBar
+@onready var ranged_heavy_bar: MultiProgressBar = $MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer/RangedHeavyBar
+
 @onready var inventory_value: RichTextLabel = $MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container/InventoryValue
 @onready var talents_value: RichTextLabel = $MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container/TalentsValue
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	button.pressed.connect(create_button_pressed)
 	main_container.hide()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func create_button_pressed():
-	#button.release_focus()
+	button.release_focus()
 	var random_character : CharacterInfo = CharacterInfo.new()
 	random_character = random_character.random()
 	
@@ -108,6 +108,12 @@ func create_button_pressed():
 	streetwise_bar.set_progress(random_character.streetwise, random_character.cunning)
 	survival_bar.set_progress(random_character.survival, random_character.cunning)
 	vigilance_bar.set_progress(random_character.vigilance, random_character.willpower)
+	
+	brawl_bar.set_progress(random_character.brawl, random_character.brawn)
+	gunnery_bar.set_progress(random_character.gunnery, random_character.agility)
+	melee_bar.set_progress(random_character.melee, random_character.brawn)
+	ranged_light_bar.set_progress(random_character.ranged_light, random_character.agility)
+	ranged_heavy_bar.set_progress(random_character.ranged_heavy, random_character.agility)
 	
 	inventory_value.text = "[ul]%s[/ul]" % ["\n".join(random_character.inventory)]
 	talents_value.text = "[ul]%s[/ul]" % ["\n".join(random_character.talents)]

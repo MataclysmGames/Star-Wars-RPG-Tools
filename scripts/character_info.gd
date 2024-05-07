@@ -43,11 +43,17 @@ var streetwise : int = 0
 var survival : int = 0
 var vigilance : int = 0
 
+var brawl : int = 0
+var gunnery : int = 0
+var melee : int = 0
+var ranged_light : int = 0
+var ranged_heavy : int = 0
+
 var inventory : Array[String] = []
 var talents : Array[String] = []
 
 func random() -> CharacterInfo:
-	var ch = DataReader.read_species().pick_random()
+	var ch : CharacterInfo = DataReader.read_species().pick_random()
 	ch.gender = pick(["Male", "Female"])
 
 	match ch.species:
@@ -81,12 +87,15 @@ func random() -> CharacterInfo:
 			match spec:
 				"Assassin":
 					ch.stealth += 1
+					ch.melee += 1
 					ch.talents.append(pick(["Grit", "Stalker"]))
 				"Gadgeteer":
 					ch.mechanics += 1
+					ch.brawl += 1
 					ch.talents.append(pick(["Toughened", "Point Blank"]))
 				"Survivalist":
 					ch.survival += 1
+					ch.brawl += 1
 					ch.talents.append(pick(["Forager", "Swift"]))
 		"Colonist":
 			var spec : String = pick(["Doctor", "Politico", "Scholar"])
@@ -96,13 +105,14 @@ func random() -> CharacterInfo:
 			ch.negotiation += 1
 			match spec:
 				"Doctor":
-					ch.medicine += 1
+					ch.medicine += 2
 					ch.talents.append(pick(["Grit", "Surgeon"]))
 				"Politico":
-					ch.coercion += 1
+					ch.coercion += 2
 					ch.talents.append(pick(["Toughened", "Kill with Kindness"]))
 				"Scholar":
-					ch.perception += 1
+					ch.leadership += 1
+					ch.charm += 1
 					ch.talents.append(pick(["Respected Scholar", "Speaks Binary"]))
 		"Explorer":
 			var spec : String = pick(["Fringer", "Scout", "Trader"])
@@ -113,12 +123,14 @@ func random() -> CharacterInfo:
 			match spec:
 				"Fringer":
 					ch.astrogation += 1
+					ch.streetwise += 1
 					ch.talents.append(pick(["Street Smarts", "Galaxy Mapper"]))
 				"Scout":
 					ch.athletics += 1
+					ch.survival += 1
 					ch.talents.append(pick(["Rapid Recovery", "Grit"]))
 				"Trader":
-					ch.negotiation += 1
+					ch.negotiation += 2
 					ch.talents.append(pick(["Wheel and Deal", "Smooth Talker"]))
 		"Hired Gun":
 			var spec : String = pick(["Bodyguard", "Marauder", "Mercenary"])
@@ -129,12 +141,18 @@ func random() -> CharacterInfo:
 			match spec:
 				"Bodyguard":
 					ch.perception += 1
+					ch.brawl += 1
+					ch.ranged_heavy += 1
 					ch.talents.append(pick(["Toughened", "Durable"]))
 				"Marauder":
 					ch.survival += 1
+					ch.brawl += 1
+					ch.ranged_light += 1
 					ch.talents.append(pick(["Feral Strength", "Lethal Blows"]))
 				"Mercenary":
 					ch.discipline += 1
+					ch.brawl += 1
+					ch.gunnery += 1
 					ch.talents.append(pick(["Point Blank", "Second Wind"]))
 		"Smuggler":
 			var spec : String = pick(["Pilot", "Scoundrel", "Thief"])
@@ -142,12 +160,14 @@ func random() -> CharacterInfo:
 			ch.coordination += 1
 			ch.piloting += 1
 			ch.skulduggery += 1
+			ch.gunnery += 1
 			match spec:
 				"Pilot":
 					ch.astrogation += 1
 					ch.talents.append(pick(["Galaxy Mapper", "Skilled Jockey"]))
 				"Scoundrel":
 					ch.charm += 1
+					ch.ranged_light += 1
 					ch.talents.append(pick(["Convincing Demeanor", "Quick Draw"]))
 				"Thief":
 					ch.computers += 1
@@ -161,6 +181,7 @@ func random() -> CharacterInfo:
 			match spec:
 				"Mechanic":
 					ch.piloting += 1
+					ch.brawl += 1
 					ch.talents.append(pick(["Solid Repairs", "Fine Tuning"]))
 				"Outlaw":
 					ch.streetwise += 1
@@ -176,7 +197,7 @@ func random() -> CharacterInfo:
 	ch.motivation = pick(["Friendship", "Love", "Freedom", "Fame", "Greed", "Status", "Expertise", "Wanderlust", "Power", "Religion", "Charity", "Non-Human Rights", "Local Politics", "Overthrow the Empire", "Crime", "Emancipation", "Droid Rights", "Capitalism", "Support the Empire", "Place of Origin", "Pet", "Childhood Friend", "Comrades", "Siblings", "Mentor", "Parents", "Extended Family", "Droid Companion", "Former Nemesis"])
 	
 	# add random skills
-	var chance : float = 0.93
+	var chance : float = 0.90
 	ch.astrogation += 0 if randf_range(0, 1) <= chance else 1
 	ch.athletics += 0 if randf_range(0, 1) <= chance else 1
 	ch.charm += 0 if randf_range(0, 1) <= chance else 1
@@ -198,6 +219,11 @@ func random() -> CharacterInfo:
 	ch.streetwise += 0 if randf_range(0, 1) <= chance else 1
 	ch.survival += 0 if randf_range(0, 1) <= chance else 1
 	ch.vigilance += 0 if randf_range(0, 1) <= chance else 1
+	ch.brawl += 0 if randf_range(0, 1) <= chance else 1
+	ch.gunnery += 0 if randf_range(0, 1) <= chance else 1
+	ch.melee += 0 if randf_range(0, 1) <= chance else 1
+	ch.ranged_light += 0 if randf_range(0, 1) <= chance else 1
+	ch.ranged_heavy += 0 if randf_range(0, 1) <= chance else 1
 	
 	# add 1 to a random characteristic
 	var idx : int = randi_range(1, 6)
