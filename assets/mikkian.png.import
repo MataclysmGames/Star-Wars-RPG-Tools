@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3utbbole0igw"
-path="res://.godot/imported/droid-male.png-338e138d9c8f870496fa7b3337292bb7.ctex"
+uid="uid://b5b7y5oel103b"
+path="res://.godot/imported/mikkian.png-caa3542683d14391a428e897c72b2d7a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/droid-male.png"
-dest_files=["res://.godot/imported/droid-male.png-338e138d9c8f870496fa7b3337292bb7.ctex"]
+source_file="res://assets/mikkian.png"
+dest_files=["res://.godot/imported/mikkian.png-caa3542683d14391a428e897c72b2d7a.ctex"]
 
 [params]
 

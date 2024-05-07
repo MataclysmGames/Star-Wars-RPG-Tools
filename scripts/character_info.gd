@@ -46,106 +46,31 @@ var vigilance : int = 0
 var inventory : Array[String] = []
 var talents : Array[String] = []
 
-static func random() -> CharacterInfo:
-	var ch = CharacterInfo.new()
+func random() -> CharacterInfo:
+	var ch = DataReader.read_species().pick_random()
 	ch.gender = pick(["Male", "Female"])
-	# pick species
-	ch.species = pick(["Bothan", "Droid", "Gand", "Human", "Rodian", "Trandoshan", "Twi'lek", "Wookiee"])
+
 	match ch.species:
 		"Bothan":
 			ch.character_name = pick(["Garc", "Nith", "Tramom", "Meenn"]) + " " + pick(["Gra'kit", "Gru'fas", "Sa'kus"])
-			ch.brawn = 1
-			ch.agility = 2
-			ch.intellect = 2
-			ch.cunning = 3
-			ch.willpower = 2
-			ch.presence = 2
-			ch.wound_threshold = 10
-			ch.strain_threshold = 11
 		"Droid":
 			ch.character_name = pick(["CT", "R4", "G7", "L1"]) + "-" + pick(["62", "PO", "D2"])
-			ch.brawn = 1
-			ch.agility = 1
-			ch.intellect = 1
-			ch.cunning = 1
-			ch.willpower = 1
-			ch.presence = 1
-			# randomly pick between intelligent and military droid
-			if randf_range(0, 1) >= 0.5:
-				ch.brawn = 3
-				ch.agility = 2
-			else:
-				ch.intellect = 3
-				ch.presence = 2
-			ch.wound_threshold = 10
-			ch.strain_threshold = 10
 		"Gand":
 			ch.character_name = pick(["Teyk", "Rox", "Tosh", "Ax"]) + " " + pick(["Doclu", "Kaff", "Nerru"])
-			ch.brawn = 2
-			ch.agility = 2
-			ch.intellect = 2
-			ch.cunning = 2
-			ch.willpower = 3
-			ch.presence = 1
-			ch.wound_threshold = 10
-			ch.strain_threshold = 10
 		"Human":
 			ch.character_name = pick(["Hugh", "Harry", "Henry", "Hope"]) + " " + pick(["Kinpow", "Tancot", "Lovdra", "Jones", "Solo", "Smith"])
-			ch.brawn = 2
-			ch.agility = 2
-			ch.intellect = 2
-			ch.cunning = 2
-			ch.willpower = 2
-			ch.presence = 2
-			ch.wound_threshold = 10
-			ch.strain_threshold = 10
 		"Rodian":
 			ch.character_name = pick(["Clortt", "Shuhi", "Beesk", "Sparn"]) + " " + pick(["Cuggs", "Ghe", "Verme"])
-			ch.brawn = 2
-			ch.agility = 3
-			ch.intellect = 2
-			ch.cunning = 2
-			ch.willpower = 1
-			ch.presence = 2
-			ch.wound_threshold = 10
-			ch.strain_threshold = 10
 		"Trandoshan":
 			ch.character_name = pick(["Jorq", "Hart", "Kahk", "Bugg", "Assh"]) + " " + pick(["Gunlu", "Sasch", "Zurn"])
-			ch.brawn = 3
-			ch.agility = 1
-			ch.intellect = 2
-			ch.cunning = 2
-			ch.willpower = 2
-			ch.presence = 2
-			ch.wound_threshold = 12
-			ch.strain_threshold = 9
 		"Twi'lek":
 			ch.character_name = pick(["Jo", "Fab", "Les", "Chak", "Met", "Cin", "Ceb"]) + " " + pick(["Pell", "Fon", "Fi", "Gedki", "Modur", "Doh"])
-			ch.brawn = 1
-			ch.agility = 2
-			ch.intellect = 2
-			ch.cunning = 2
-			ch.willpower = 2
-			ch.presence = 3
-			ch.wound_threshold = 10
-			ch.strain_threshold = 11
 		"Wookiee":
 			ch.character_name = pick(["Spov", "Shiwu", "Rilna", "Purrsi", "Unmedde", "Dhitil"])
-			ch.brawn = 3
-			ch.agility = 2
-			ch.intellect = 2
-			ch.cunning = 2
-			ch.willpower = 1
-			ch.presence = 2
-			ch.wound_threshold = 14
-			ch.strain_threshold = 8
 		_:
-			ch.character_name = pick(["Freddy"]) + " " + pick(["Friday"])
+			ch.character_name = pick(["Teyk", "Rox", "Tosh", "Ax"]) + " " + pick(["Doclu", "Kaff", "Nerru"])
 	
-	# pick career
 	ch.career = pick(["Bounty Hunter", "Colonist", "Explorer", "Hired Gun", "Smuggler", "Technician"])
-	
-	# specialization
 	match ch.career:
 		"Bounty Hunter":
 			var spec : String = pick(["Assassin", "Gadgeteer", "Survivalist"])
@@ -320,5 +245,5 @@ static func random() -> CharacterInfo:
 	
 	return ch
 	
-static func pick(options : Array[String]) -> String:
+func pick(options : Array[String]) -> String:
 	return options.pick_random()

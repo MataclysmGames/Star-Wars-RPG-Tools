@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwkelae7smprs"
-path="res://.godot/imported/droid-female.png-57f626b0edf0169f51f7adaac9bafa1b.ctex"
+uid="uid://cmnvgr8o2s4qs"
+path="res://.godot/imported/iakaru.png-9de33fdba41e3a89f3875c04e2cacada.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/droid-female.png"
-dest_files=["res://.godot/imported/droid-female.png-57f626b0edf0169f51f7adaac9bafa1b.ctex"]
+source_file="res://assets/iakaru.png"
+dest_files=["res://.godot/imported/iakaru.png-9de33fdba41e3a89f3875c04e2cacada.ctex"]
 
 [params]
 

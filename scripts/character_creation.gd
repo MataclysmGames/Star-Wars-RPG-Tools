@@ -59,10 +59,15 @@ func _process(delta: float) -> void:
 	pass
 
 func create_button_pressed():
-	button.release_focus()
-	var random_character : CharacterInfo = CharacterInfo.random()
+	#button.release_focus()
+	var random_character : CharacterInfo = CharacterInfo.new()
+	random_character = random_character.random()
 	
 	profile.texture = load("res://assets/%s-%s.png" % [random_character.species.to_lower(), random_character.gender.to_lower()])
+	if not profile.texture:
+		profile.texture = load("res://assets/%s.png" % [random_character.species.to_lower()])
+	if not profile.texture:
+		profile.texture = load("res://assets/default.png")
 	
 	name_value.text = random_character.character_name
 	species_value.text = random_character.species

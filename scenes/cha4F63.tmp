@@ -1,0 +1,876 @@
+[gd_scene load_steps=12 format=3 uid="uid://4lkhyjgjly8d"]
+
+[ext_resource type="Script" path="res://scripts/character_creation.gd" id="1_72lxa"]
+[ext_resource type="Theme" uid="uid://bv62ox4jmwkl" path="res://resources/default_font_theme.tres" id="2_vddke"]
+[ext_resource type="Texture2D" uid="uid://dwx23df8fxgc5" path="res://assets/human-male.png" id="3_32b6o"]
+[ext_resource type="PackedScene" uid="uid://brm5b2pkgo4ep" path="res://scenes/multi_progress_bar.tscn" id="4_etu6i"]
+[ext_resource type="Theme" uid="uid://b665kecqsoohy" path="res://resources/bold_font_theme.tres" id="4_wpcbl"]
+
+[sub_resource type="Gradient" id="Gradient_oksiq"]
+colors = PackedColorArray(0.0728426, 0.0728426, 0.0728426, 1, 0.230315, 0.230315, 0.230315, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ejquf"]
+noise_type = 0
+seed = 32
+frequency = 0.0022
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nsmy1"]
+width = 640
+height = 360
+color_ramp = SubResource("Gradient_oksiq")
+noise = SubResource("FastNoiseLite_ejquf")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhuq8"]
+bg_color = Color(0.4, 0.4, 0.4, 0.254902)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.882353, 0.415686, 0, 0.611765)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4x2ju"]
+bg_color = Color(0.400698, 0.400698, 0.400698, 0.254902)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.686275, 0.203922, 0.611765)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_keldp"]
+bg_color = Color(0.400698, 0.400698, 0.400698, 0.254902)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.662745, 0.407843, 1, 0.611765)
+border_blend = true
+
+[node name="Character Creation" type="CanvasLayer"]
+script = ExtResource("1_72lxa")
+
+[node name="BackgroundTexture" type="TextureRect" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+size_flags_vertical = 3
+texture = SubResource("NoiseTexture2D_nsmy1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="FullContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TopContainer" type="HBoxContainer" parent="MarginContainer/FullContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Title" type="Label" parent="MarginContainer/FullContainer/TopContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("4_wpcbl")
+theme_override_font_sizes/font_size = 16
+text = "Character Creation"
+
+[node name="Button" type="Button" parent="MarginContainer/FullContainer/TopContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("2_vddke")
+action_mode = 0
+text = "Randomize"
+
+[node name="MainContainer" type="HBoxContainer" parent="MarginContainer/FullContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="InfoContainer" type="PanelContainer" parent="MarginContainer/FullContainer/MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_yhuq8")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/FullContainer/MainContainer/InfoContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="CharacterContainer" type="VBoxContainer" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+
+[node name="Profile" type="TextureRect" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("3_32b6o")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="InfoLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer"]
+layout_mode = 2
+theme = ExtResource("4_wpcbl")
+theme_override_font_sizes/font_size = 12
+text = "Character"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer"]
+layout_mode = 2
+theme_override_constants/v_separation = 2
+columns = 2
+
+[node name="NameLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource("2_vddke")
+theme_override_colors/font_color = Color(0.658824, 0.658824, 0.658824, 1)
+theme_override_font_sizes/font_size = 7
+text = "Name"
+vertical_alignment = 1
+
+[node name="NameValue" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Turbongo Furlong"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SpeciesLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource("2_vddke")
+theme_override_colors/font_color = Color(0.658824, 0.658824, 0.658824, 1)
+theme_override_font_sizes/font_size = 7
+text = "Species"
+vertical_alignment = 1
+
+[node name="SpeciesValue" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Human"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CareerLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource("2_vddke")
+theme_override_colors/font_color = Color(0.658824, 0.658824, 0.658824, 1)
+theme_override_font_sizes/font_size = 7
+text = "Career"
+vertical_alignment = 1
+
+[node name="CareerValue" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Bounty Hunter"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SpecsLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource("2_vddke")
+theme_override_colors/font_color = Color(0.658824, 0.658824, 0.658824, 1)
+theme_override_font_sizes/font_size = 7
+text = "Specs."
+vertical_alignment = 1
+
+[node name="SpecsValue" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Assassin, Gadgeteer"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ObligationLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource("2_vddke")
+theme_override_colors/font_color = Color(0.658824, 0.658824, 0.658824, 1)
+theme_override_font_sizes/font_size = 7
+text = "Obligation"
+vertical_alignment = 1
+
+[node name="ObligationValue" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Dutybound"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MotivationLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource("2_vddke")
+theme_override_colors/font_color = Color(0.658824, 0.658824, 0.658824, 1)
+theme_override_font_sizes/font_size = 7
+text = "Motivation"
+vertical_alignment = 1
+
+[node name="MotivationValue" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Droid Rights"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="StatsLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer"]
+layout_mode = 2
+theme = ExtResource("4_wpcbl")
+theme_override_font_sizes/font_size = 12
+text = "Stats"
+horizontal_alignment = 1
+
+[node name="StatsContainer" type="GridContainer" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer"]
+layout_mode = 2
+theme_override_constants/v_separation = 2
+columns = 2
+
+[node name="SoakLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource("2_vddke")
+theme_override_colors/font_color = Color(0.658824, 0.658824, 0.658824, 1)
+theme_override_font_sizes/font_size = 7
+text = "Soak"
+vertical_alignment = 1
+
+[node name="SoakValue" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "3"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="WoundThresholdLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource("2_vddke")
+theme_override_colors/font_color = Color(0.658824, 0.658824, 0.658824, 1)
+theme_override_font_sizes/font_size = 7
+text = "Wound Threshold"
+vertical_alignment = 1
+
+[node name="WoundThresholdValue" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "12"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="StrainThresholdLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource("2_vddke")
+theme_override_colors/font_color = Color(0.658824, 0.658824, 0.658824, 1)
+theme_override_font_sizes/font_size = 7
+text = "Strain Threshold"
+vertical_alignment = 1
+
+[node name="StrainThresholdValue" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "14"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BackgroundLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer"]
+layout_mode = 2
+theme = ExtResource("4_wpcbl")
+theme_override_font_sizes/font_size = 12
+text = "Background"
+horizontal_alignment = 1
+
+[node name="BackgroundValue" type="RichTextLabel" parent="MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/normal_font_size = 7
+bbcode_enabled = true
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+[node name="SkillsContainer" type="PanelContainer" parent="MarginContainer/FullContainer/MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_4x2ju")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="CharacteristicsContainer" type="VBoxContainer" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="CharacteristicsLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer"]
+layout_mode = 2
+theme = ExtResource("4_wpcbl")
+theme_override_font_sizes/font_size = 12
+text = "Characteristics"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_override_constants/v_separation = 0
+columns = 6
+
+[node name="BrawnValue" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 14
+text = "3"
+horizontal_alignment = 1
+
+[node name="AgilityValue" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 14
+text = "3"
+horizontal_alignment = 1
+
+[node name="IntellectValue" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 14
+text = "3"
+horizontal_alignment = 1
+
+[node name="CunningValue" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 14
+text = "3"
+horizontal_alignment = 1
+
+[node name="WillpowerValue" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 14
+text = "3"
+horizontal_alignment = 1
+
+[node name="PresenceValue" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 14
+text = "3"
+horizontal_alignment = 1
+
+[node name="BrawnLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Brawn"
+horizontal_alignment = 1
+
+[node name="AgilityLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Agility"
+horizontal_alignment = 1
+
+[node name="IntellectLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Intellect"
+horizontal_alignment = 1
+
+[node name="CunningLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Cunning"
+horizontal_alignment = 1
+
+[node name="WillpowerLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Willpower"
+horizontal_alignment = 1
+
+[node name="PresenceLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Presence"
+horizontal_alignment = 1
+
+[node name="SkillsLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer"]
+layout_mode = 2
+theme = ExtResource("4_wpcbl")
+theme_override_font_sizes/font_size = 12
+text = "Skills"
+horizontal_alignment = 1
+
+[node name="SkillsGridContainer" type="GridContainer" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer"]
+layout_mode = 2
+theme_override_constants/v_separation = 1
+columns = 2
+
+[node name="AstrogationLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Astrogation"
+
+[node name="AstrogationBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
+
+[node name="AthleticsLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Athletics"
+
+[node name="AthleticsBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
+
+[node name="CharmLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Charm"
+
+[node name="CharmBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
+
+[node name="CoercionLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Coercion"
+
+[node name="CoercionBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
+
+[node name="ComputersLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Computers"
+
+[node name="ComputersBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
+
+[node name="CoolLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Cool"
+
+[node name="CoolBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
+
+[node name="CoordinationLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Coordination"
+
+[node name="CoordinationBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
+
+[node name="DeceptionLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Deception"
+
+[node name="DeceptionBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
+
+[node name="DisciplineLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Discipline"
+
+[node name="DisciplineBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
+
+[node name="LeadershipLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Leadership"
+
+[node name="LeadershipBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
+
+[node name="MechanicsLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Mechanics"
+
+[node name="MechanicsBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
+
+[node name="MedicineLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Medicine"
+
+[node name="MedicineBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
+
+[node name="NegotiationLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Negotiation"
+
+[node name="NegotiationBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
+
+[node name="PerceptionLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Perception"
+
+[node name="PerceptionBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
+
+[node name="PilotingLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Piloting"
+
+[node name="PilotingBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
+
+[node name="ResilienceLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Resilience"
+
+[node name="ResilienceBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
+
+[node name="SkulduggeryLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Skulduggery"
+
+[node name="SkulduggeryBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
+
+[node name="StealthLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Stealth"
+
+[node name="StealthBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
+
+[node name="StreetwiseLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Streetwise"
+
+[node name="StreetwiseBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
+
+[node name="SurvivalLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Survival"
+
+[node name="SurvivalBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
+
+[node name="VigilanceLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/font_size = 7
+text = "Vigilance"
+
+[node name="VigilanceBar" parent="MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer" instance=ExtResource("4_etu6i")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 0.0
+primary_progress = 0
+secondary_progress = 0
+
+[node name="InventoryContainer" type="PanelContainer" parent="MarginContainer/FullContainer/MainContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_keldp")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Container" type="VBoxContainer" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="InventoryLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("4_wpcbl")
+theme_override_font_sizes/font_size = 12
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="InventoryValue" type="RichTextLabel" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[ul]
+Blaster pistol
+Chewing gum
+"
+fit_content = true
+
+[node name="TalentsLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("4_wpcbl")
+theme_override_font_sizes/font_size = 12
+text = "Talents & Abilities"
+horizontal_alignment = 1
+
+[node name="TalentsValue" type="RichTextLabel" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container"]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[ul]
+Intimidating - Suffer 1 strain to downgrade or upgrade a Coercion skill check
+Toughened - Gain +2 wound threshold"
+fit_content = true
