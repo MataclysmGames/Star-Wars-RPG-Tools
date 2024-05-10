@@ -11,7 +11,7 @@ func _ready() -> void:
 	show_percentage = false
 	second_progress_bar.show_percentage = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	second_progress_bar.global_position = global_position
 	second_progress_bar.size = size
 

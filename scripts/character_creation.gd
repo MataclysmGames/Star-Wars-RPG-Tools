@@ -66,61 +66,65 @@ func back_to_title():
 
 func create_button_pressed():
 	randomize_button.release_focus()
-	var random_character : CharacterInfo = CharacterInfo.new()
-	random_character = random_character.random()
+	var character : CharacterInfo = CharacterInfo.random()
 	
-	profile.texture = load("res://assets/%s-%s.png" % [random_character.species.to_lower(), random_character.gender.to_lower()])
-	if not profile.texture:
-		profile.texture = load("res://assets/%s.png" % [random_character.species.to_lower()])
-	if not profile.texture:
-		profile.texture = load("res://assets/default.png")
+	var profile_load_list : Array[String] = [
+		"res://assets/%s-%s.png" % [character.species.to_lower(), character.gender.to_lower()],
+		"res://assets/%s.png" % [character.species.to_lower()],
+		"res://assets/default.png"
+	]
 	
-	name_value.text = random_character.character_name
-	species_value.text = random_character.species
-	career_value.text = random_character.career
-	specs_value.text = ", ".join(random_character.specs)
-	obligation_value.text = random_character.obligation
-	motivation_value.text = random_character.motivation
+	for resource in profile_load_list:
+		if ResourceLoader.exists(resource):
+			profile.texture = load(resource)
+			break
 	
-	soak_value.text = str(random_character.soak_value)
-	wound_threshold_value.text = str(random_character.wound_threshold)
-	strain_threshold_value.text = str(random_character.strain_threshold)
+	name_value.text = character.character_name
+	species_value.text = character.species
+	career_value.text = character.career
+	specs_value.text = ", ".join(character.specs)
+	obligation_value.text = character.obligation
+	motivation_value.text = character.motivation
 	
-	brawn_value.text = str(random_character.brawn)
-	agility_value.text = str(random_character.agility)
-	intellect_value.text = str(random_character.intellect)
-	cunning_value.text = str(random_character.cunning)
-	willpower_value.text = str(random_character.willpower)
-	presence_value.text = str(random_character.presence)
+	soak_value.text = str(character.soak_value)
+	wound_threshold_value.text = str(character.wound_threshold)
+	strain_threshold_value.text = str(character.strain_threshold)
 	
-	astrogation_bar.set_progress(random_character.astrogation, random_character.intellect)
-	athletics_bar.set_progress(random_character.athletics, random_character.brawn)
-	charm_bar.set_progress(random_character.charm, random_character.presence)
-	coercion_bar.set_progress(random_character.coercion, random_character.willpower)
-	computers_bar.set_progress(random_character.computers, random_character.intellect)
-	cool_bar.set_progress(random_character.cool, random_character.presence)
-	coordination_bar.set_progress(random_character.coordination, random_character.agility)
-	deception_bar.set_progress(random_character.deception, random_character.cunning)
-	discipline_bar.set_progress(random_character.discipline, random_character.willpower)
-	leadership_bar.set_progress(random_character.leadership, random_character.presence)
-	mechanics_bar.set_progress(random_character.mechanics, random_character.intellect)
-	medicine_bar.set_progress(random_character.medicine, random_character.intellect)
-	negotiation_bar.set_progress(random_character.negotiation, random_character.presence)
-	perception_bar.set_progress(random_character.perception, random_character.cunning)
-	piloting_bar.set_progress(random_character.piloting, random_character.agility)
-	resilience_bar.set_progress(random_character.resilience, random_character.brawn)
-	skulduggery_bar.set_progress(random_character.skulduggery, random_character.cunning)
-	stealth_bar.set_progress(random_character.stealth, random_character.agility)
-	streetwise_bar.set_progress(random_character.streetwise, random_character.cunning)
-	survival_bar.set_progress(random_character.survival, random_character.cunning)
-	vigilance_bar.set_progress(random_character.vigilance, random_character.willpower)
+	brawn_value.text = str(character.brawn)
+	agility_value.text = str(character.agility)
+	intellect_value.text = str(character.intellect)
+	cunning_value.text = str(character.cunning)
+	willpower_value.text = str(character.willpower)
+	presence_value.text = str(character.presence)
 	
-	brawl_bar.set_progress(random_character.brawl, random_character.brawn)
-	gunnery_bar.set_progress(random_character.gunnery, random_character.agility)
-	melee_bar.set_progress(random_character.melee, random_character.brawn)
-	ranged_light_bar.set_progress(random_character.ranged_light, random_character.agility)
-	ranged_heavy_bar.set_progress(random_character.ranged_heavy, random_character.agility)
+	astrogation_bar.set_progress(character.astrogation, character.intellect)
+	athletics_bar.set_progress(character.athletics, character.brawn)
+	charm_bar.set_progress(character.charm, character.presence)
+	coercion_bar.set_progress(character.coercion, character.willpower)
+	computers_bar.set_progress(character.computers, character.intellect)
+	cool_bar.set_progress(character.cool, character.presence)
+	coordination_bar.set_progress(character.coordination, character.agility)
+	deception_bar.set_progress(character.deception, character.cunning)
+	discipline_bar.set_progress(character.discipline, character.willpower)
+	leadership_bar.set_progress(character.leadership, character.presence)
+	mechanics_bar.set_progress(character.mechanics, character.intellect)
+	medicine_bar.set_progress(character.medicine, character.intellect)
+	negotiation_bar.set_progress(character.negotiation, character.presence)
+	perception_bar.set_progress(character.perception, character.cunning)
+	piloting_bar.set_progress(character.piloting, character.agility)
+	resilience_bar.set_progress(character.resilience, character.brawn)
+	skulduggery_bar.set_progress(character.skulduggery, character.cunning)
+	stealth_bar.set_progress(character.stealth, character.agility)
+	streetwise_bar.set_progress(character.streetwise, character.cunning)
+	survival_bar.set_progress(character.survival, character.cunning)
+	vigilance_bar.set_progress(character.vigilance, character.willpower)
 	
-	inventory_value.text = "[ul]%s[/ul]" % ["\n".join(random_character.inventory)]
-	talents_value.text = "[ul]%s[/ul]" % ["\n".join(random_character.talents)]
+	brawl_bar.set_progress(character.brawl, character.brawn)
+	gunnery_bar.set_progress(character.gunnery, character.agility)
+	melee_bar.set_progress(character.melee, character.brawn)
+	ranged_light_bar.set_progress(character.ranged_light, character.agility)
+	ranged_heavy_bar.set_progress(character.ranged_heavy, character.agility)
+	
+	inventory_value.text = "[ul]%s[/ul]" % ["\n".join(character.inventory)]
+	talents_value.text = "[ul]%s[/ul]" % ["\n".join(character.talents)]
 	main_container.show()

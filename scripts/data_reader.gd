@@ -2,19 +2,10 @@ extends Node
 
 var species_list : Array[CharacterInfo] = []
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func read_species() -> Array[CharacterInfo]:
 	if species_list.size() != 0:
 		return species_list
-	var species_list : Array[CharacterInfo] = []
+	species_list = []
 	var file = FileAccess.open("res://data/species.txt", FileAccess.READ)
 	if not file:
 		printerr("Invalid species file")
@@ -40,3 +31,18 @@ func read_species() -> Array[CharacterInfo]:
 	file.close()
 	
 	return species_list
+
+func pick_random_species() -> CharacterInfo:
+	var species : Array[CharacterInfo] = read_species()
+	var pick : CharacterInfo = species.pick_random()
+	var copy : CharacterInfo = CharacterInfo.new()
+	copy.species = pick.species
+	copy.brawn = pick.brawn
+	copy.agility = pick.agility
+	copy.intellect = pick.intellect
+	copy.cunning = pick.cunning
+	copy.willpower = pick.willpower
+	copy.presence = pick.presence
+	copy.wound_threshold = pick.wound_threshold
+	copy.strain_threshold = pick.strain_threshold
+	return copy

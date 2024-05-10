@@ -1,5 +1,4 @@
 class_name CharacterInfo
-extends Node
 
 var character_name : String = ""
 var gender : String = "Male" # or "Female"
@@ -52,8 +51,8 @@ var ranged_heavy : int = 0
 var inventory : Array[String] = []
 var talents : Array[String] = []
 
-func random() -> CharacterInfo:
-	var ch : CharacterInfo = DataReader.read_species().pick_random()
+static func random() -> CharacterInfo:
+	var ch : CharacterInfo = DataReader.pick_random_species()
 	ch.gender = pick(["Male", "Female"])
 
 	match ch.species:
@@ -271,5 +270,5 @@ func random() -> CharacterInfo:
 	
 	return ch
 	
-func pick(options : Array[String]) -> String:
+static func pick(options : Array[String]) -> String:
 	return options.pick_random()
