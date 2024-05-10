@@ -54,26 +54,12 @@ var talents : Array[String] = []
 static func random() -> CharacterInfo:
 	var ch : CharacterInfo = DataReader.pick_random_species()
 	ch.gender = pick(["Male", "Female"])
-
-	match ch.species:
-		"Bothan":
-			ch.character_name = pick(["Garc", "Nith", "Tramom", "Meenn"]) + " " + pick(["Gra'kit", "Gru'fas", "Sa'kus"])
-		"Droid":
-			ch.character_name = pick(["CT", "R4", "G7", "L1"]) + "-" + pick(["62", "PO", "D2"])
-		"Gand":
-			ch.character_name = pick(["Teyk", "Rox", "Tosh", "Ax"]) + " " + pick(["Doclu", "Kaff", "Nerru"])
-		"Human":
-			ch.character_name = pick(["Hugh", "Harry", "Henry", "Hope"]) + " " + pick(["Kinpow", "Tancot", "Lovdra", "Jones", "Solo", "Smith"])
-		"Rodian":
-			ch.character_name = pick(["Clortt", "Shuhi", "Beesk", "Sparn"]) + " " + pick(["Cuggs", "Ghe", "Verme"])
-		"Trandoshan":
-			ch.character_name = pick(["Jorq", "Hart", "Kahk", "Bugg", "Assh"]) + " " + pick(["Gunlu", "Sasch", "Zurn"])
-		"Twi'lek":
-			ch.character_name = pick(["Jo", "Fab", "Les", "Chak", "Met", "Cin", "Ceb"]) + " " + pick(["Pell", "Fon", "Fi", "Gedki", "Modur", "Doh"])
-		"Wookiee":
-			ch.character_name = pick(["Spov", "Shiwu", "Rilna", "Purrsi", "Unmedde", "Dhitil"])
-		_:
-			ch.character_name = pick(["Teyk", "Rox", "Tosh", "Ax"]) + " " + pick(["Doclu", "Kaff", "Nerru"])
+	
+	var species_names_file : String = "res://data/%s_names.txt" % ch.species.to_lower()
+	if FileAccess.file_exists(species_names_file):
+		ch.character_name = DataReader.read_lines(species_names_file).pick_random()
+	else:
+		ch.character_name = DataReader.pick_random_name()
 	
 	ch.career = pick(["Bounty Hunter", "Colonist", "Explorer", "Hired Gun", "Smuggler", "Technician"])
 	match ch.career:

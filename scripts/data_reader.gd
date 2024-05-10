@@ -1,6 +1,29 @@
 extends Node
 
+var first_names : Array[String] = []
+var last_names : Array[String] = []
 var species_list : Array[CharacterInfo] = []
+
+var file_cache : Dictionary = {} # [String, Array[String]]
+
+func _init() -> void:
+	first_names = read_lines("res://data/first_names.txt")
+	last_names = read_lines("res://data/last_names.txt")
+	read_species()
+
+func read_lines(file_name : String) -> Array[String]:
+	if file_cache.has(file_name):
+		return file_cache[file_name]
+	var file = FileAccess.open(file_name, FileAccess.READ)
+	if not file:
+		push_error("Invalid file name: '%s'" % file_name)
+	var lines : Array[String] = []
+	while !file.eof_reached():
+		var line : String = file.get_line()
+		if line:
+			lines.append(line)
+	file_cache[file_name] = lines
+	return lines
 
 func read_species() -> Array[CharacterInfo]:
 	if species_list.size() != 0:
@@ -46,3 +69,6 @@ func pick_random_species() -> CharacterInfo:
 	copy.wound_threshold = pick.wound_threshold
 	copy.strain_threshold = pick.strain_threshold
 	return copy
+
+func pick_random_name() -> String:
+	return first_names.pick_random() + " " + last_names.pick_random()

@@ -14,7 +14,7 @@ config/name="Star-Wars-RPG-Tools"
 run/main_scene="res://scenes/title.tscn"
 config/use_custom_user_dir=true
 config/features=PackedStringArray("4.2", "Mobile")
-run/max_fps=30
+run/max_fps=15
 config/icon="res://icon.svg"
 
 [autoload]
@@ -32,6 +32,8 @@ window/vsync/vsync_mode=0
 
 [physics]
 
+common/physics_ticks_per_second=1
+common/max_physics_steps_per_frame=1
 2d/physics_engine="GodotPhysics2D"
 
 [rendering]
