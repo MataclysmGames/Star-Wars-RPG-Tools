@@ -54,7 +54,6 @@ var talents : Array[String] = []
 static func random() -> CharacterInfo:
 	var ch : CharacterInfo = DataReader.pick_random_species()
 	ch.gender = pick(["Male", "Female"])
-	
 	var species_names_file : String = "res://data/%s_names.txt" % ch.species.to_lower()
 	if FileAccess.file_exists(species_names_file):
 		ch.character_name = DataReader.read_lines(species_names_file).pick_random()

@@ -14,7 +14,7 @@ config/name="Star-Wars-RPG-Tools"
 run/main_scene="res://scenes/title.tscn"
 config/use_custom_user_dir=true
 config/features=PackedStringArray("4.2", "Mobile")
-run/max_fps=15
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [autoload]
