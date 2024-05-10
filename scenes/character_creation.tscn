@@ -75,6 +75,14 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 0
 
+[node name="BackButton" type="Button" parent="MarginContainer/FullContainer/TopContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("2_vddke")
+action_mode = 0
+text = "Back to Main Menu"
+
 [node name="Title" type="Label" parent="MarginContainer/FullContainer/TopContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
@@ -82,12 +90,13 @@ theme = ExtResource("4_wpcbl")
 theme_override_font_sizes/font_size = 16
 text = "Character Creation"
 
-[node name="Button" type="Button" parent="MarginContainer/FullContainer/TopContainer"]
+[node name="RandomizeButton" type="Button" parent="MarginContainer/FullContainer/TopContainer"]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 theme = ExtResource("2_vddke")
 action_mode = 0
-text = "Randomize"
+text = "Create Random"
 
 [node name="MainContainer" type="HBoxContainer" parent="MarginContainer/FullContainer"]
 layout_mode = 2

@@ -1,6 +1,7 @@
 extends CanvasLayer
 
-@onready var button: Button = $MarginContainer/FullContainer/TopContainer/Button
+@onready var back_button: Button = $MarginContainer/FullContainer/TopContainer/BackButton
+@onready var randomize_button: Button = $MarginContainer/FullContainer/TopContainer/RandomizeButton
 @onready var main_container: HBoxContainer = $MarginContainer/FullContainer/MainContainer
 
 @onready var profile: TextureRect = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/Profile
@@ -55,11 +56,16 @@ extends CanvasLayer
 @onready var talents_value: RichTextLabel = $MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container/TalentsValue
 
 func _ready() -> void:
-	button.pressed.connect(create_button_pressed)
+	randomize_button.pressed.connect(create_button_pressed)
+	back_button.pressed.connect(back_to_title)
 	main_container.hide()
+	create_button_pressed()
+
+func back_to_title():
+	get_tree().change_scene_to_file("res://scenes/title.tscn")
 
 func create_button_pressed():
-	button.release_focus()
+	randomize_button.release_focus()
 	var random_character : CharacterInfo = CharacterInfo.new()
 	random_character = random_character.random()
 	
