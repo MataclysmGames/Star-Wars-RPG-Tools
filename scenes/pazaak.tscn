@@ -116,6 +116,5 @@ text = "End Turn"
 [node name="OpponentContainer" parent="MarginContainer/VBoxContainer/BoardContainer" instance=ExtResource("4_mvqox")]
 layout_mode = 2
 player_name = "Opponent"
-hide_hand = true
 controllable = false
 card_direction = 3

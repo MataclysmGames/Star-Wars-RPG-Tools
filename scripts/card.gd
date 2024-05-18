@@ -15,11 +15,11 @@ var can_interact : bool = true
 func _ready() -> void:
 	set_value(card_value)
 	if can_interact:
-		if not either_sign:
-			swap_button.set_deferred("disabled", true)
-			swap_button.hide()
-			swap_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
-		swap_button.pressed.connect(swap_sign)
+		if either_sign:
+			swap_button.set_deferred("disabled", false)
+			swap_button.show()
+			swap_button.mouse_filter = Control.MOUSE_FILTER_STOP
+			swap_button.pressed.connect(swap_sign)
 	else:
 		swap_button.queue_free()
 		play_button.set_deferred("disabled", true)

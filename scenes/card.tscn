@@ -50,10 +50,12 @@ text = "1"
 flat = true
 
 [node name="SwapButton" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_top = 35.0
 offset_right = 48.0
 offset_bottom = 60.0
+mouse_filter = 2
 theme = ExtResource("3_m37x5")
 theme_override_font_sizes/font_size = 12
 theme_override_styles/normal = SubResource("StyleBoxFlat_kivdf")
@@ -61,5 +63,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_iutqn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_66fuu")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_h2ohx")
 theme_override_styles/focus = SubResource("StyleBoxFlat_0p23h")
+disabled = true
 text = "Swap"
 flat = true

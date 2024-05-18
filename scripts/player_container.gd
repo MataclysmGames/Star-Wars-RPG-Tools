@@ -3,6 +3,7 @@ extends PanelContainer
 
 signal win()
 signal lose()
+signal stand()
 
 @export var player_name : String = "Player"
 @export var hide_hand : bool = false
@@ -27,7 +28,7 @@ func _ready() -> void:
 	evaluate_score()
 	for i in range(4):
 		var card : Card = card_scene.instantiate() as Card
-		card.either_sign = randf_range(0, 1) <= 0.5
+		card.either_sign = randf_range(0, 1) <= 0.25
 		card.card_value = randi_range(1, 5) * 1 if randf_range(0, 1) <= 0.5 else -1
 		card.modulate = Color(0, 0, 0, 1) if hide_hand else Color(1, 1, 1, 1)
 		add_card_to_hand(card)
@@ -39,8 +40,10 @@ func hide_overlay():
 	overlay.hide()
 
 func move_card_from_hand_to_grid(card : Card):
-	card.swap_button.queue_free()
+	if card.swap_button and not card.swap_button.is_queued_for_deletion():
+		card.swap_button.hide()
 	card.play_button.set_deferred("disabled", true)
+	card.modulate = Color(1, 1, 1, 1)
 	hand_container.remove_child(card)
 	add_card_to_grid(card)
 
@@ -63,13 +66,11 @@ func evaluate_score() -> int:
 			score += child.card_value
 	score_label.text = "Score: %d" % [score]
 	
-	if score > 20:
-		lose.emit()
-	
-	if score == 20:
-		win.emit()
+	if score >= 20:
+		print("Score: %d" % score)
+		stand.emit()
 	
 	if grid_container.get_child_count() >= 9:
-		win.emit()
+		stand.emit()
 	
 	return score
