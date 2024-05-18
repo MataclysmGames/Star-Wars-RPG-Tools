@@ -1,0 +1,121 @@
+[gd_scene load_steps=10 format=3 uid="uid://bs7e3ggn0komo"]
+
+[ext_resource type="Script" path="res://scripts/pazaak.gd" id="1_atv5s"]
+[ext_resource type="Material" uid="uid://bn3w362viht06" path="res://resources/pazaak_crt.tres" id="2_erui4"]
+[ext_resource type="Theme" uid="uid://b665kecqsoohy" path="res://resources/bold_font_theme.tres" id="3_vy70k"]
+[ext_resource type="PackedScene" uid="uid://c0wsow8xocpv7" path="res://scenes/player_container.tscn" id="4_mvqox"]
+[ext_resource type="StyleBox" uid="uid://be2kuuq40fol5" path="res://resources/flat_red.tres" id="5_myjee"]
+[ext_resource type="StyleBox" uid="uid://bs41j8ghf1ydd" path="res://resources/flat_green.tres" id="6_dwr5e"]
+
+[sub_resource type="Gradient" id="Gradient_oksiq"]
+colors = PackedColorArray(0.0728426, 0.0728426, 0.0728426, 1, 0.230315, 0.230315, 0.230315, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ejquf"]
+noise_type = 0
+seed = 32
+frequency = 0.0022
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_muufk"]
+width = 640
+height = 360
+color_ramp = SubResource("Gradient_oksiq")
+noise = SubResource("FastNoiseLite_ejquf")
+
+[node name="Pazaak" type="CanvasLayer"]
+script = ExtResource("1_atv5s")
+
+[node name="ShaderOverlay" type="ColorRect" parent="."]
+z_index = 1
+material = ExtResource("2_erui4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundTexture" type="TextureRect" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+size_flags_vertical = 3
+texture = SubResource("NoiseTexture2D_muufk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TopContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/TopContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("3_vy70k")
+action_mode = 0
+text = "Back to Main Menu"
+
+[node name="InfoLabel" type="Label" parent="MarginContainer/VBoxContainer/TopContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_vy70k")
+theme_override_font_sizes/font_size = 10
+text = "Get as close to 20 without going over. First to 3 points wins!"
+horizontal_alignment = 2
+
+[node name="BoardContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="PlayerContainer" parent="MarginContainer/VBoxContainer/BoardContainer" instance=ExtResource("4_mvqox")]
+layout_mode = 2
+
+[node name="MiddleContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/BoardContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+
+[node name="StandButton" type="Button" parent="MarginContainer/VBoxContainer/BoardContainer/MiddleContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme = ExtResource("3_vy70k")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = ExtResource("5_myjee")
+theme_override_styles/hover = ExtResource("5_myjee")
+theme_override_styles/pressed = ExtResource("5_myjee")
+theme_override_styles/disabled = ExtResource("5_myjee")
+theme_override_styles/focus = ExtResource("5_myjee")
+text = " Stand "
+
+[node name="EndTurnButton" type="Button" parent="MarginContainer/VBoxContainer/BoardContainer/MiddleContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 10
+theme = ExtResource("3_vy70k")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = ExtResource("6_dwr5e")
+theme_override_styles/hover = ExtResource("6_dwr5e")
+theme_override_styles/pressed = ExtResource("6_dwr5e")
+theme_override_styles/disabled = ExtResource("6_dwr5e")
+theme_override_styles/focus = ExtResource("6_dwr5e")
+text = "End Turn"
+
+[node name="OpponentContainer" parent="MarginContainer/VBoxContainer/BoardContainer" instance=ExtResource("4_mvqox")]
+layout_mode = 2
+player_name = "Opponent"
+hide_hand = true
+controllable = false
+card_direction = 3

@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://b1bj7qd5wx43g"]
+
+[ext_resource type="Script" path="res://scripts/card.gd" id="1_bq18i"]
+[ext_resource type="Theme" uid="uid://b665kecqsoohy" path="res://resources/bold_font_theme.tres" id="1_sd8g1"]
+[ext_resource type="Theme" uid="uid://bv62ox4jmwkl" path="res://resources/default_font_theme.tres" id="3_m37x5"]
+
+[sub_resource type="Gradient" id="Gradient_o36t3"]
+offsets = PackedFloat32Array(0, 0.1, 0.5, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.949113, 0, 0.0508865, 1, 0.0522388, 0, 0.947761, 1, 0, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_chg5k"]
+gradient = SubResource("Gradient_o36t3")
+width = 48
+height = 60
+fill_from = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kivdf"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iutqn"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66fuu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2ohx"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0p23h"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Card" type="TextureRect"]
+texture = SubResource("GradientTexture2D_chg5k")
+script = ExtResource("1_bq18i")
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 36.0
+theme = ExtResource("1_sd8g1")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_kivdf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iutqn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_66fuu")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_h2ohx")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0p23h")
+text = "1"
+flat = true
+
+[node name="SwapButton" type="Button" parent="."]
+layout_mode = 0
+offset_top = 35.0
+offset_right = 48.0
+offset_bottom = 60.0
+theme = ExtResource("3_m37x5")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_kivdf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iutqn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_66fuu")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_h2ohx")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0p23h")
+text = "Swap"
+flat = true

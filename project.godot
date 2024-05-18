@@ -28,7 +28,7 @@ window/size/viewport_height=360
 window/size/mode=4
 window/size/extend_to_title=true
 window/stretch/mode="canvas_items"
-window/vsync/vsync_mode=0
+window/vsync/vsync_mode=2
 
 [physics]
 

@@ -6,10 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://brm5b2pkgo4ep" path="res://scenes/multi_progress_bar.tscn" id="4_etu6i"]
 [ext_resource type="Theme" uid="uid://b665kecqsoohy" path="res://resources/bold_font_theme.tres" id="4_wpcbl"]
 
-[sub_resource type="Gradient" id="Gradient_oksiq"]
+[sub_resource type="Gradient" id="Gradient_ifpkk"]
 colors = PackedColorArray(0.0728426, 0.0728426, 0.0728426, 1, 0.230315, 0.230315, 0.230315, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ejquf"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0ur52"]
 noise_type = 0
 seed = 32
 frequency = 0.0022
@@ -18,8 +18,8 @@ fractal_type = 2
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nsmy1"]
 width = 640
 height = 360
-color_ramp = SubResource("Gradient_oksiq")
-noise = SubResource("FastNoiseLite_ejquf")
+color_ramp = SubResource("Gradient_ifpkk")
+noise = SubResource("FastNoiseLite_0ur52")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhuq8"]
 bg_color = Color(0.4, 0.4, 0.4, 0.254902)
@@ -63,10 +63,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
 [node name="FullContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2

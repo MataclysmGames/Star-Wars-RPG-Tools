@@ -13,7 +13,7 @@ func create_character():
 	get_tree().change_scene_to_file("res://scenes/character_creation.tscn")
 	
 func play_pazaak():
-	print("Not implemented")
+	get_tree().change_scene_to_file("res://scenes/pazaak.tscn")
 
 func exit():
 	get_tree().quit()
