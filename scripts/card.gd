@@ -1,8 +1,8 @@
 class_name Card
 extends TextureRect
 
-const red_color : Color = Color(1, 0.3, 0.3)
-const blue_color : Color = Color(0.3, 0.3, 1)
+const red_color : Color = Color(1, 0.25, 0.25)
+const blue_color : Color = Color(0.25, 0.25, 1)
 
 @export var card_value : int = 0
 @export var either_sign : bool = false

@@ -30,7 +30,7 @@ func _ready() -> void:
 		var card : Card = card_scene.instantiate() as Card
 		card.either_sign = randf_range(0, 1) <= 0.25
 		card.card_value = randi_range(1, 5) * 1 if randf_range(0, 1) <= 0.5 else -1
-		card.modulate = Color(0, 0, 0, 1) if hide_hand else Color(1, 1, 1, 1)
+		card.modulate = Color(0, 0, 0, 0.8) if hide_hand else Color(1, 1, 1, 0.8)
 		add_card_to_hand(card)
 
 func show_overlay():
