@@ -2,6 +2,10 @@ extends Node
 
 var first_names : Array[String] = []
 var last_names : Array[String] = []
+var personality_positives : Array[String] = []
+var personality_evens : Array[String] = []
+var personality_negatives : Array[String] = []
+var quests : Array[String] = []
 var species_list : Array[CharacterInfo] = []
 
 var file_cache : Dictionary = {} # [String, Array[String]]
@@ -9,7 +13,26 @@ var file_cache : Dictionary = {} # [String, Array[String]]
 func _init() -> void:
 	first_names = read_lines("res://data/first_names.txt")
 	last_names = read_lines("res://data/last_names.txt")
+	personality_positives = read_lines("res://data/personality_positives.txt")
+	personality_evens = read_lines("res://data/personality_evens.txt")
+	personality_negatives = read_lines("res://data/personality_negatives.txt")
+	quests = read_lines("res://data/quests.txt")
 	read_species()
+
+func pick_random_quests(amount : int) -> Array[String]:
+	var random_quests : Array[String] = []
+	quests.shuffle()
+	for i in range(min(amount, len(quests))):
+		random_quests.append(quests[i])
+	return random_quests
+
+func pick_random_dispositions(amount : int) -> Array[String]:
+	var dispositon_list : Array[String] = []
+	var personality_type : Array[String] = [personality_positives, personality_evens, personality_negatives].pick_random()
+	personality_type.shuffle()
+	for i in range(min(amount, len(personality_type))):
+		dispositon_list.append(personality_type[i])
+	return dispositon_list
 
 func read_lines(file_name : String) -> Array[String]:
 	if file_cache.has(file_name):

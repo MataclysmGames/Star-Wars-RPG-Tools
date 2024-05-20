@@ -52,8 +52,11 @@ extends CanvasLayer
 @onready var ranged_light_bar: MultiProgressBar = $MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer/RangedLightBar
 @onready var ranged_heavy_bar: MultiProgressBar = $MarginContainer/FullContainer/MainContainer/SkillsContainer/MarginContainer/CharacteristicsContainer/SkillsGridContainer/RangedHeavyBar
 
-@onready var inventory_value: RichTextLabel = $MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container/InventoryValue
-@onready var talents_value: RichTextLabel = $MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container/TalentsValue
+@onready var inventory_value: RichTextLabel = $MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container/TopContainer/InventoryValue
+@onready var talents_value: RichTextLabel = $MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container/TopContainer/TalentsValue
+
+@onready var disposition_value: RichTextLabel = $MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container/BottomContainer/DispositionValue
+@onready var available_quests_value: RichTextLabel = $MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container/BottomContainer/AvailableQuestsValue
 
 func _ready() -> void:
 	randomize_button.pressed.connect(create_button_pressed)
@@ -127,4 +130,15 @@ func create_button_pressed():
 	
 	inventory_value.text = "[ul]%s[/ul]" % ["\n".join(character.inventory)]
 	talents_value.text = "[ul]%s[/ul]" % ["\n".join(character.talents)]
+	
+	if character.disposition:
+		disposition_value.text = "[ul]%s[/ul]" % ["\n".join(character.disposition)]
+	else:
+		disposition_value.text = "[ul]None[/ul]"
+
+	if character.available_quests:
+		available_quests_value.text = "[ul]%s[/ul]" % ["\n".join(character.available_quests)]
+	else:
+		available_quests_value.text = "[ul]None[/ul]"
+
 	main_container.show()

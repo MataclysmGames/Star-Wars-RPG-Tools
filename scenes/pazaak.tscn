@@ -73,7 +73,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_vy70k")
 theme_override_font_sizes/font_size = 10
-text = "Get as close to 20 without going over. First to 3 points wins!"
+text = "Get as close to 20 without going over"
 horizontal_alignment = 2
 
 [node name="BoardContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]

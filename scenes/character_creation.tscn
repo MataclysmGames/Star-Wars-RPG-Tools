@@ -874,7 +874,10 @@ theme_override_constants/margin_bottom = 2
 [node name="Container" type="VBoxContainer" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="InventoryLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container"]
+[node name="TopContainer" type="VBoxContainer" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container"]
+layout_mode = 2
+
+[node name="InventoryLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container/TopContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("4_wpcbl")
@@ -882,7 +885,7 @@ theme_override_font_sizes/font_size = 8
 text = "Inventory"
 horizontal_alignment = 1
 
-[node name="InventoryValue" type="RichTextLabel" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container"]
+[node name="InventoryValue" type="RichTextLabel" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container/TopContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("2_vddke")
@@ -894,7 +897,7 @@ Chewing gum
 "
 fit_content = true
 
-[node name="TalentsLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container"]
+[node name="TalentsLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container/TopContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("4_wpcbl")
@@ -902,30 +905,63 @@ theme_override_font_sizes/font_size = 8
 text = "Talents & Abilities"
 horizontal_alignment = 1
 
-[node name="TalentsValue" type="RichTextLabel" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container"]
+[node name="TalentsValue" type="RichTextLabel" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container/TopContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme = ExtResource("2_vddke")
 theme_override_font_sizes/normal_font_size = 8
 bbcode_enabled = true
 text = "[ul]
-Intimidating - Suffer 1 strain to downgrade or upgrade a Coercion skill check
-Toughened - Gain +2 wound threshold"
+Intimidating
+Toughened"
 fit_content = true
 
-[node name="BackgroundLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container"]
+[node name="BottomContainer" type="VBoxContainer" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container"]
 layout_mode = 2
+size_flags_vertical = 10
+
+[node name="DispositionLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container/BottomContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("4_wpcbl")
 theme_override_font_sizes/font_size = 8
-text = "Background"
+text = "Disposition"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="BackgroundValue" type="RichTextLabel" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container"]
+[node name="DispositionValue" type="RichTextLabel" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container/BottomContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("2_vddke")
-theme_override_font_sizes/normal_font_size = 7
+theme_override_font_sizes/normal_font_size = 8
 bbcode_enabled = true
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+text = "[ul]
+First
+Second
+Third
+Fourth
+[/ul]"
+fit_content = true
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+[node name="AvailableQuestsLabel" type="Label" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container/BottomContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("4_wpcbl")
+theme_override_font_sizes/font_size = 8
+text = "Available Quests"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AvailableQuestsValue" type="RichTextLabel" parent="MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container/BottomContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_vddke")
+theme_override_font_sizes/normal_font_size = 6
+bbcode_enabled = true
+text = "[ul]
+First
+Second
+Third
+Fourth
+[/ul]"
+fit_content = true

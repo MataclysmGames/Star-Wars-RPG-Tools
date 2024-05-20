@@ -51,6 +51,9 @@ var ranged_heavy : int = 0
 var inventory : Array[String] = []
 var talents : Array[String] = []
 
+var disposition : Array[String] = []
+var available_quests : Array[String] = []
+
 static func random() -> CharacterInfo:
 	var ch : CharacterInfo = DataReader.pick_random_species()
 	ch.gender = pick(["Male", "Female"])
@@ -252,6 +255,12 @@ static func random() -> CharacterInfo:
 		ch.strain_threshold += 1
 	if ch.talents.has("Toughened"):
 		ch.wound_threshold += 2
+	
+	# Disposition
+	ch.disposition = DataReader.pick_random_dispositions(randi_range(2, 4))
+	
+	# Available quests
+	ch.available_quests = DataReader.pick_random_quests(randi_range(-2, 2))
 	
 	return ch
 	
