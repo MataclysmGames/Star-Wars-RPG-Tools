@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0wsow8xocpv7"]
+[gd_scene load_steps=4 format=3 uid="uid://c0wsow8xocpv7"]
 
 [ext_resource type="Theme" uid="uid://b665kecqsoohy" path="res://resources/bold_font_theme.tres" id="1_6y18h"]
 [ext_resource type="Script" path="res://scripts/player_container.gd" id="1_opx1q"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tnywb"]
+bg_color = Color(0, 0, 0, 0.784314)
+
 [node name="PlayerContainer" type="PanelContainer"]
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_tnywb")
 script = ExtResource("1_opx1q")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -20,17 +24,19 @@ size_flags_vertical = 0
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_6y18h")
-theme_override_colors/font_color = Color(0.588235, 0.588235, 0.588235, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Player"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="VBoxContainer/InfoContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_6y18h")
-theme_override_colors/font_color = Color(0.588235, 0.588235, 0.588235, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Score: 0"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -43,10 +49,10 @@ theme_override_constants/margin_bottom = 4
 
 [node name="Background" type="ColorRect" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
-color = Color(0.454902, 0.454902, 0.454902, 0.0784314)
+color = Color(0.121569, 0.121569, 0.121569, 1)
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/MarginContainer"]
-custom_minimum_size = Vector2(160, 200)
+custom_minimum_size = Vector2(152, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
@@ -57,9 +63,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 10
 theme = ExtResource("1_6y18h")
-theme_override_colors/font_color = Color(0.588235, 0.588235, 0.588235, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Player Hand"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HandMarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -71,10 +78,10 @@ theme_override_constants/margin_bottom = 4
 [node name="Background" type="ColorRect" parent="VBoxContainer/HandMarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-color = Color(0.454902, 0.454902, 0.454902, 0.0784314)
+color = Color(0.121569, 0.121569, 0.121569, 1)
 
 [node name="HandContainer" type="HBoxContainer" parent="VBoxContainer/HandMarginContainer"]
-custom_minimum_size = Vector2(220, 60)
+custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -82,4 +89,4 @@ size_flags_vertical = 4
 [node name="Overlay" type="ColorRect" parent="."]
 visible = false
 layout_mode = 2
-color = Color(0, 0, 0, 0.501961)
+color = Color(0, 0, 0, 0.662745)

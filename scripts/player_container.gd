@@ -29,7 +29,10 @@ func _ready() -> void:
 	for i in range(4):
 		var card : Card = card_scene.instantiate() as Card
 		card.either_sign = randf_range(0, 1) <= 0.25
-		card.card_value = randi_range(1, 5) * 1 if randf_range(0, 1) <= 0.5 else -1
+		if not hide_hand:
+			card.card_value = randi_range(1, 5) * 1 if randf_range(0, 1) <= 0.5 else -1
+		else:
+			card.card_value = randi_range(1, 5)
 		card.modulate = Color(0, 0, 0, 0.8) if hide_hand else Color(1, 1, 1, 0.8)
 		add_card_to_hand(card)
 

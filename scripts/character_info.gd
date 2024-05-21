@@ -257,7 +257,7 @@ static func random() -> CharacterInfo:
 		ch.wound_threshold += 2
 	
 	# Disposition
-	ch.disposition = DataReader.pick_random_dispositions(randi_range(2, 4))
+	ch.disposition = DataReader.pick_random_dispositions(randi_range(1, 2))
 	
 	# Available quests
 	ch.available_quests = DataReader.pick_random_quests(randi_range(-2, 2))

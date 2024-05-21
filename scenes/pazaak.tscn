@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://bs7e3ggn0komo"]
 
 [ext_resource type="Script" path="res://scripts/pazaak.gd" id="1_atv5s"]
-[ext_resource type="Material" uid="uid://bn3w362viht06" path="res://resources/pazaak_crt.tres" id="2_erui4"]
+[ext_resource type="PackedScene" uid="uid://dm1qo3iyokjxk" path="res://scenes/shader_overlay.tscn" id="2_i6i2m"]
 [ext_resource type="Theme" uid="uid://b665kecqsoohy" path="res://resources/bold_font_theme.tres" id="3_vy70k"]
 [ext_resource type="PackedScene" uid="uid://c0wsow8xocpv7" path="res://scenes/player_container.tscn" id="4_mvqox"]
 [ext_resource type="StyleBox" uid="uid://be2kuuq40fol5" path="res://resources/flat_red.tres" id="5_myjee"]
 [ext_resource type="StyleBox" uid="uid://bs41j8ghf1ydd" path="res://resources/flat_green.tres" id="6_dwr5e"]
 
 [sub_resource type="Gradient" id="Gradient_oksiq"]
-colors = PackedColorArray(0.0728426, 0.0728426, 0.0728426, 1, 0.230315, 0.230315, 0.230315, 1)
+colors = PackedColorArray(0.101961, 0.101961, 0.101961, 1, 0.303233, 0.303233, 0.303233, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ejquf"]
 noise_type = 0
@@ -25,14 +25,7 @@ noise = SubResource("FastNoiseLite_ejquf")
 [node name="Pazaak" type="CanvasLayer"]
 script = ExtResource("1_atv5s")
 
-[node name="ShaderOverlay" type="ColorRect" parent="."]
-z_index = 1
-material = ExtResource("2_erui4")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="ShaderOverlay" parent="." instance=ExtResource("2_i6i2m")]
 
 [node name="BackgroundTexture" type="TextureRect" parent="."]
 offset_right = 640.0
@@ -65,6 +58,7 @@ custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 theme = ExtResource("3_vy70k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 action_mode = 0
 text = "Back to Main Menu"
 
@@ -72,6 +66,7 @@ text = "Back to Main Menu"
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_vy70k")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 10
 text = "Get as close to 20 without going over"
 horizontal_alignment = 2

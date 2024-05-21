@@ -10,7 +10,10 @@ signal player_end_turn()
 @onready var stand_button : Button = $MarginContainer/VBoxContainer/BoardContainer/MiddleContainer/StandButton
 @onready var end_turn_button : Button = $MarginContainer/VBoxContainer/BoardContainer/MiddleContainer/EndTurnButton
 
+@onready var background_texture: TextureRect = $BackgroundTexture
+
 const WAIT_TIME : float = 0.5
+const COLOR_CHANGE_DURATION : float = 5.0
 
 var card_scene : PackedScene = preload("res://scenes/card.tscn")
 
@@ -42,10 +45,24 @@ func _ready() -> void:
 		shared_deck.append(val)
 	shared_deck.shuffle()
 	play_game()
-	
+	background_color_change()
+
+func _process(delta: float) -> void:
+	background_texture.modulate = background_texture.modulate.lerp(next_color, delta / COLOR_CHANGE_DURATION)
+
+var next_color : Color = Color(1, 1, 1, 1)
+func background_color_change():
+	var tween : Tween = create_tween()
+	tween.tween_callback(func(): next_color = random_color())
+	tween.tween_interval(COLOR_CHANGE_DURATION)
+	tween.set_loops()
+
+func random_color() -> Color:
+	return Color(randf_range(0.2, 1), randf_range(0.2, 1), randf_range(0.2, 1), 1.0)
+
 func back_to_title():
 	get_tree().change_scene_to_file("res://scenes/title.tscn")
-	
+
 func player_win():
 	player_rounds_won += 1
 	print("Player win")
@@ -76,10 +93,12 @@ func game_round():
 		
 	if not round_over and not player_stand:
 		await start_player_round()
-		await player_end_turn
+		if player_container.evaluate_score() < 20:
+			await player_end_turn
 	if not round_over and not opponent_stand:
 		await start_opponent_round()
-		auto_play(player_container, opponent_container)
+		if opponent_container.evaluate_score() < 20:
+			auto_play(player_container, opponent_container)
 	if not round_over:
 		play_game()
 
