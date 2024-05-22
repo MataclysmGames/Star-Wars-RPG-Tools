@@ -78,9 +78,17 @@ func read_species() -> Array[CharacterInfo]:
 	
 	return species_list
 
+func pick_acceptable_species(acceptable_species : Array[String], in_list : bool = true) -> CharacterInfo:
+	var species : Array[CharacterInfo] = read_species()
+	var pick : CharacterInfo = species.filter(func(c : CharacterInfo): return (c.species in acceptable_species) == in_list).pick_random()
+	return copy_character(pick)
+
 func pick_random_species() -> CharacterInfo:
 	var species : Array[CharacterInfo] = read_species()
 	var pick : CharacterInfo = species.pick_random()
+	return copy_character(pick)
+
+func copy_character(pick : CharacterInfo) -> CharacterInfo:
 	var copy : CharacterInfo = CharacterInfo.new()
 	copy.species = pick.species
 	copy.brawn = pick.brawn

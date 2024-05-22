@@ -1,7 +1,9 @@
 extends CanvasLayer
 
 @onready var back_button: Button = $MarginContainer/FullContainer/TopContainer/BackButton
-@onready var randomize_button: Button = $MarginContainer/FullContainer/TopContainer/RandomizeButton
+@onready var common_random_button: Button = $MarginContainer/FullContainer/TopContainer/CommonRandomButton
+@onready var exotic_random_button: Button = $MarginContainer/FullContainer/TopContainer/ExoticRandomButton
+
 @onready var main_container: HBoxContainer = $MarginContainer/FullContainer/MainContainer
 
 @onready var profile: TextureRect = $MarginContainer/FullContainer/MainContainer/InfoContainer/MarginContainer/CharacterContainer/Profile
@@ -59,18 +61,24 @@ extends CanvasLayer
 @onready var available_quests_value: RichTextLabel = $MarginContainer/FullContainer/MainContainer/InventoryContainer/MarginContainer/Container/BottomContainer/AvailableQuestsValue
 
 func _ready() -> void:
-	randomize_button.pressed.connect(create_button_pressed)
+	common_random_button.pressed.connect(on_common_random_button)
+	exotic_random_button.pressed.connect(on_exotic_random_button)
 	back_button.pressed.connect(back_to_title)
 	main_container.hide()
-	create_button_pressed()
+	on_common_random_button()
 
 func back_to_title():
 	get_tree().change_scene_to_file("res://scenes/title.tscn")
 
-func create_button_pressed():
-	randomize_button.release_focus()
-	var character : CharacterInfo = CharacterInfo.random()
+func on_common_random_button():
+	common_random_button.release_focus()
+	populate_character_info(CharacterGenerator.common_random())
+
+func on_exotic_random_button():
+	exotic_random_button.release_focus()
+	populate_character_info(CharacterGenerator.exotic_random())
 	
+func populate_character_info(character : CharacterInfo):
 	var profile_load_list : Array[String] = [
 		"res://assets/%s-%s.png" % [character.species.to_lower(), character.gender.to_lower()],
 		"res://assets/%s.png" % [character.species.to_lower()],

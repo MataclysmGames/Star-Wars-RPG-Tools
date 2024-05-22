@@ -90,13 +90,21 @@ theme = ExtResource("4_wpcbl")
 theme_override_font_sizes/font_size = 16
 text = "Character Creation"
 
-[node name="RandomizeButton" type="Button" parent="MarginContainer/FullContainer/TopContainer"]
+[node name="CommonRandomButton" type="Button" parent="MarginContainer/FullContainer/TopContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 theme = ExtResource("2_vddke")
 action_mode = 0
-text = "Create Random"
+text = "Common Random"
+
+[node name="ExoticRandomButton" type="Button" parent="MarginContainer/FullContainer/TopContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("2_vddke")
+action_mode = 0
+text = "Exotic Random"
 
 [node name="MainContainer" type="HBoxContainer" parent="MarginContainer/FullContainer"]
 layout_mode = 2
