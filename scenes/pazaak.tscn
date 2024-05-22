@@ -88,11 +88,11 @@ custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme = ExtResource("3_vy70k")
 theme_override_font_sizes/font_size = 12
-theme_override_styles/normal = ExtResource("5_myjee")
+theme_override_styles/focus = ExtResource("5_myjee")
+theme_override_styles/disabled = ExtResource("5_myjee")
 theme_override_styles/hover = ExtResource("5_myjee")
 theme_override_styles/pressed = ExtResource("5_myjee")
-theme_override_styles/disabled = ExtResource("5_myjee")
-theme_override_styles/focus = ExtResource("5_myjee")
+theme_override_styles/normal = ExtResource("5_myjee")
 text = " Stand "
 
 [node name="EndTurnButton" type="Button" parent="MarginContainer/VBoxContainer/BoardContainer/MiddleContainer"]
@@ -101,11 +101,11 @@ layout_mode = 2
 size_flags_vertical = 10
 theme = ExtResource("3_vy70k")
 theme_override_font_sizes/font_size = 12
-theme_override_styles/normal = ExtResource("6_dwr5e")
+theme_override_styles/focus = ExtResource("6_dwr5e")
+theme_override_styles/disabled = ExtResource("6_dwr5e")
 theme_override_styles/hover = ExtResource("6_dwr5e")
 theme_override_styles/pressed = ExtResource("6_dwr5e")
-theme_override_styles/disabled = ExtResource("6_dwr5e")
-theme_override_styles/focus = ExtResource("6_dwr5e")
+theme_override_styles/normal = ExtResource("6_dwr5e")
 text = "End Turn"
 
 [node name="OpponentContainer" parent="MarginContainer/VBoxContainer/BoardContainer" instance=ExtResource("4_mvqox")]
