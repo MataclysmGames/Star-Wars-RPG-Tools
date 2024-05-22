@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var check_box: CheckBox = $MarginContainer/VBoxContainer/HBoxContainer/CheckBox
 
 func _ready() -> void:
+	DisplayServer.screen_set_orientation(DisplayServer.SCREEN_LANDSCAPE)
 	create_character_button.pressed.connect(create_character)
 	play_pazaak_button.pressed.connect(play_pazaak)
 	exit_button.pressed.connect(exit)
@@ -22,6 +23,8 @@ func exit():
 
 func on_check_box(toggled_on : bool):
 	if toggled_on:
+		DisplayServer.screen_set_orientation(DisplayServer.SCREEN_LANDSCAPE)
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 	else:
+		DisplayServer.screen_set_orientation(DisplayServer.SCREEN_LANDSCAPE)
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
