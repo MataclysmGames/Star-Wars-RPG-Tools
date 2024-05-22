@@ -1,42 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://gpa4408onum5"]
+[gd_scene load_steps=5 format=3 uid="uid://gpa4408onum5"]
 
 [ext_resource type="Script" path="res://scripts/title.gd" id="1_2aypt"]
 [ext_resource type="Theme" uid="uid://bv62ox4jmwkl" path="res://resources/default_font_theme.tres" id="1_eunsn"]
 [ext_resource type="Script" path="res://scripts/hover_button.gd" id="2_bub6y"]
-[ext_resource type="Texture2D" uid="uid://v7f1lnopa6of" path="res://resources/black_checked.tres" id="4_tgfjh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_20qgx"]
 bg_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_whuao"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v08mc"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_456q7"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6w4vm"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6vy1r"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1iw02"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yv5ju"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m07lm"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_reth3"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3u0ii"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q0dag"]
-
-[sub_resource type="Gradient" id="Gradient_qe63c"]
-colors = PackedColorArray(0.784314, 0.784314, 0.784314, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_xoj5g"]
-gradient = SubResource("Gradient_qe63c")
-width = 16
-height = 16
 
 [node name="Title" type="CanvasLayer"]
 script = ExtResource("1_2aypt")
@@ -136,30 +105,3 @@ theme_override_font_sizes/font_size = 5
 text = "-... -.-- / -- .- - - .... . .-- / . .-. .. -.-. -.- ... --- -."
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-theme = ExtResource("1_eunsn")
-theme_override_colors/font_color = Color(0.588235, 0.588235, 0.588235, 1)
-theme_override_font_sizes/font_size = 8
-text = "Fullscreen"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_whuao")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_v08mc")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_456q7")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_6w4vm")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_6vy1r")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1iw02")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_yv5ju")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_m07lm")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_reth3")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_3u0ii")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_q0dag")
-theme_override_icons/checked = SubResource("GradientTexture2D_xoj5g")
-theme_override_icons/unchecked = ExtResource("4_tgfjh")
