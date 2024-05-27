@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bs7e3ggn0komo"]
+[gd_scene load_steps=12 format=3 uid="uid://bs7e3ggn0komo"]
 
 [ext_resource type="Script" path="res://scripts/pazaak.gd" id="1_atv5s"]
 [ext_resource type="PackedScene" uid="uid://dm1qo3iyokjxk" path="res://scenes/shader_overlay.tscn" id="2_i6i2m"]
@@ -22,6 +22,30 @@ height = 360
 color_ramp = SubResource("Gradient_oksiq")
 noise = SubResource("FastNoiseLite_ejquf")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kaxa1"]
+bg_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.0784314, 0.27451, 0.392157, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kpqyg"]
+bg_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.392157, 0.27451, 0.0784314, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [node name="Pazaak" type="CanvasLayer"]
 script = ExtResource("1_atv5s")
 
@@ -41,10 +65,11 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+theme = ExtResource("3_vy70k")
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -56,20 +81,22 @@ size_flags_vertical = 0
 [node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/TopContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 4
 theme = ExtResource("3_vy70k")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 action_mode = 0
-text = "Back to Main Menu"
+text = "Back to Title"
 
 [node name="InfoLabel" type="Label" parent="MarginContainer/VBoxContainer/TopContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 1
 theme = ExtResource("3_vy70k")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 10
 text = "Get as close to 20 without going over"
-horizontal_alignment = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BoardContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -78,6 +105,7 @@ theme_override_constants/separation = 8
 
 [node name="PlayerContainer" parent="MarginContainer/VBoxContainer/BoardContainer" instance=ExtResource("4_mvqox")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kaxa1")
 
 [node name="MiddleContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/BoardContainer"]
 custom_minimum_size = Vector2(120, 0)
@@ -110,6 +138,7 @@ text = "End Turn"
 
 [node name="OpponentContainer" parent="MarginContainer/VBoxContainer/BoardContainer" instance=ExtResource("4_mvqox")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kpqyg")
 player_name = "Opponent"
 hide_hand = true
 controllable = false
